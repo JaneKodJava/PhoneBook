@@ -2,18 +2,29 @@
 public class Cat
 {
     private double originWeight;
-    private double weight;
+    private static double weight;
 
     private double minWeight;
     private double maxWeight;
+    public static String name;
+    public static String color;
 
-    public Cat()
+    public Cat(double w, String n, String c)
     {
-        weight = 1500.0 + 3000.0 * Math.random();
-        originWeight = weight;
+        Cat.weight = w; //1500.0 + 3000.0 * Math.random();
+        Cat.name = n;
+        Cat.color = c;
+        originWeight = Cat.weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
 
+    }
+
+    public static String getColor(){
+        return color;
+    }
+    public static String getName(){
+        return name;
     }
 
     public void meow()
