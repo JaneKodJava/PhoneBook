@@ -1,59 +1,56 @@
 
 public class Cat
 {
-    private double originWeight;
+    private static double originWeight;
     private static double weight;
 
-    private double minWeight;
-    private double maxWeight;
-    public static String name;
-    public static String color;
+    private static double minWeight;
+    private static double maxWeight;
+    private static int count = 0;
 
-    public Cat(double w, String n, String c)
+    public Cat()
     {
-        Cat.weight = w; //1500.0 + 3000.0 * Math.random();
-        Cat.name = n;
-        Cat.color = c;
+        Cat.weight = 1500.0 + 3000.0 * Math.random();
         originWeight = Cat.weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
+        count++;
 
     }
 
-    public static String getColor(){
-        return color;
-    }
-    public static String getName(){
-        return name;
+    public static int getCount(){
+        return count;
     }
 
-    public void meow()
+    public static void meow()
     {
         weight = weight - 1;
         System.out.println("Meow");
     }
 
-    public void feed(Double amount)
+    public static void feed(Double amount)
     {
         weight = weight + amount;
     }
 
-    public void drink(Double amount)
+    public static void drink(Double amount)
     {
         weight = weight + amount;
     }
 
-    public Double getWeight()
+    public static Double getWeight()
     {
         return weight;
     }
 
-    public String getStatus()
+    public static String getStatus()
     {
         if(weight < minWeight) {
+            count--;
             return "Dead";
         }
         else if(weight > maxWeight) {
+            count--;
             return "Exploded";
         }
         else if(weight > originWeight) {
