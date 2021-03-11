@@ -6,16 +6,25 @@ public class Cat
 
     private static double minWeight;
     private static double maxWeight;
+    private static String name;
     private static int count = 0;
 
     public Cat()
     {
-        Cat.weight = 1500.0 + 3000.0 * Math.random();
+        Cat.weight = 1100.0; //1500.0 + 3000.0 * Math.random();
         originWeight = Cat.weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
         count++;
 
+    }
+    public Cat(String name){
+        this();
+        this.name = name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public static int getCount(){

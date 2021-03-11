@@ -4,23 +4,25 @@ public class Loader
 {
     public static void main(String[] args)
     {
-        Cat murka = new Cat();
-        Cat vasya = new Cat();
-        Cat barsik = new Cat();
-
-        System.out.println("Number of cats " +Cat.getCount());
-        while (vasya.getWeight() > 999){
-            vasya.meow();
-        }
-        System.out.println("Vasya weight = " +vasya.getWeight());
-        System.out.println("Vasya status = " +vasya.getStatus());
-        System.out.println("Number of cats " +Cat.getCount());
-
-        barsik.feed(10000.0);
-        System.out.println("Barsic weight = " +barsik.getWeight());
-        System.out.println("Barsic status = " +barsik.getStatus());
-        System.out.println("Number of cats " +Cat.getCount());
-
+        Loader.getKitten().setName("Murka");
+        System.out.println("Weight Kitten Murka= " +Cat.getWeight());
+        Loader.getKitten().setName("Alisa");
+        System.out.println("Weight Kitten Alisa= " +Cat.getWeight());
+        Loader.getKitten().setName("Begemot");
+        System.out.println("Weight Kitten Begemot= " +Cat.getWeight());
+        System.out.println("Number of cats = " +Cat.getCount());
 
     }
+
+    private static Cat getKitten(){
+        return new Cat();
+    }
+
+    //Cat murka = new Cat();
+
+
+
+
+
+
 }
