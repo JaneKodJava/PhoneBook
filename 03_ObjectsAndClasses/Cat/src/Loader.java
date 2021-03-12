@@ -4,25 +4,16 @@ public class Loader
 {
     public static void main(String[] args)
     {
-        Loader.getKitten().setName("Murka");
-        System.out.println("Weight Kitten Murka= " +Cat.getWeight());
-        Loader.getKitten().setName("Alisa");
-        System.out.println("Weight Kitten Alisa= " +Cat.getWeight());
-        Loader.getKitten().setName("Begemot");
-        System.out.println("Weight Kitten Begemot= " +Cat.getWeight());
-        System.out.println("Number of cats = " +Cat.getCount());
+        //Loader.getKitten().setName("Murka");
+        Cat kitten = getKitten();
+        kitten.setWeight(1100.0);
+        System.out.println(kitten.getWeight());
+
 
     }
 
     private static Cat getKitten(){
         return new Cat();
     }
-
-    //Cat murka = new Cat();
-
-
-
-
-
 
 }

@@ -11,7 +11,7 @@ public class Cat
 
     public Cat()
     {
-        Cat.weight = 1100.0; //1500.0 + 3000.0 * Math.random();
+        //Cat.weight = 1100.0; //1500.0 + 3000.0 * Math.random();
         originWeight = Cat.weight;
         minWeight = 1000.0;
         maxWeight = 9000.0;
@@ -20,9 +20,11 @@ public class Cat
     }
     public Cat(String name){
         this();
-        this.name = name;
+        //this.weight = weight;
     }
-
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
     public void setName(String name){
         this.name = name;
     }
