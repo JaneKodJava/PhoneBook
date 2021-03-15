@@ -18,9 +18,9 @@ public class Cat
         count++;
 
     }
-    public Cat(String name){
+    public Cat(Double weight){
         this();
-        //this.weight = weight;
+        this.weight = weight;
     }
     public void setWeight(double weight){
         this.weight = weight;
