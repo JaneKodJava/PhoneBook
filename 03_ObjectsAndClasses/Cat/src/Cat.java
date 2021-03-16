@@ -1,33 +1,39 @@
 
 public class Cat
 {
-    private static double originWeight;
-    private static double weight;
+    private double originWeight;
+    private double weight;
 
-    private static double minWeight;
-    private static double maxWeight;
-    private static String name;
+    private double minWeight;
+    private double maxWeight;
+    private String name;
     private static int count = 0;
     private String color;
 
-    public Cat()
-    {
+    //public Cat()
+    //{
         //Cat.weight = 1100.0; //1500.0 + 3000.0 * Math.random();
-        originWeight = Cat.weight;
-        minWeight = 1000.0;
-        maxWeight = 9000.0;
-        count++;
+        //originWeight = Cat.weight;
+        //minWeight = 1000.0;
+        //maxWeight = 9000.0;
+        //count++;
 
-    }
-    public Cat(Double weight){
-        this();
+   // }
+    public Cat(Double weight, String name, String color){
+        //this();
         this.weight = weight;
+        this.color = color;
+        this.name = name;
     }
     public void setWeight(double weight){
         this.weight = weight;
     }
     public void setName(String name){
         this.name = name;
+    }
+
+    public String getName(){
+        return name;
     }
 
     public static int getCount(){
@@ -42,28 +48,28 @@ public class Cat
         return color;
     }
 
-    public static void meow()
+    public void meow()
     {
         weight = weight - 1;
         System.out.println("Meow");
     }
 
-    public static void feed(Double amount)
+    public void feed(Double amount)
     {
         weight = weight + amount;
     }
 
-    public static void drink(Double amount)
+    public void drink(Double amount)
     {
         weight = weight + amount;
     }
 
-    public static Double getWeight()
+    public Double getWeight()
     {
         return weight;
     }
 
-    public static String getStatus()
+    public String getStatus()
     {
         if(weight < minWeight) {
             count--;
