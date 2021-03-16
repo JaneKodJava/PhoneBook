@@ -15,4 +15,29 @@ public class Car
             special + "Автомобиль с номером " + number +
             ":\n\tВысота: " + height + " мм\n\tМасса: " + weight + " кг";
     }
+
+    public void setWeight(double weight){
+        this.weight = weight;
+    }
+
+    public double getWeight(){
+        return weight;
+    }
+
+    public void setNumber(String number){
+        this.number = number;
+    }
+
+    public String getNumber(){
+        return number;
+    }
+
+    public void setHeight(int height){
+        this.height = height;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
 }
