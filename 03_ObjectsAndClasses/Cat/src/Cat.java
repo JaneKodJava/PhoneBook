@@ -2,29 +2,34 @@
 public class Cat
 {
     private double originWeight;
-    private double weight;
+    private static double weight;
 
     private double minWeight;
     private double maxWeight;
     private String name;
     private static int count = 0;
-    private final Colors type;
+    //private final Colors type;
 
-    //public Cat()
-    //{
-        //Cat.weight = 1100.0; //1500.0 + 3000.0 * Math.random();
-        //originWeight = Cat.weight;
-        //minWeight = 1000.0;
-        //maxWeight = 9000.0;
-        //count++;
+    public Cat()
+    {
+        Cat.weight = 1100.0; //1500.0 + 3000.0 * Math.random();
+        originWeight = Cat.weight;
+        minWeight = 1000.0;
+        maxWeight = 9000.0;
+        count++;
 
-    // }
+    }
     public Cat(Double weight, String name, Colors type){
         //this();
         this.weight = weight;
         this.name = name;
-        this.type = type;
+        //this.type = type;
     }
+
+    //public static Cat getKitten(){
+    //    return new Cat();
+    //}
+
     public void setWeight(double weight){
         this.weight = weight;
     }
@@ -44,9 +49,9 @@ public class Cat
      //   this.color = color;
     //}
 
-    public Colors getColors(){
-        return type;
-    }
+   // public Colors getColors(){
+     //   return type;
+    //}
 
     public void meow()
     {
