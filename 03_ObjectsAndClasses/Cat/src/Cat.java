@@ -8,7 +8,7 @@ public class Cat
     private double maxWeight;
     private String name;
     private static int count = 0;
-    private String color;
+    private final Colors type;
 
     //public Cat()
     //{
@@ -18,12 +18,12 @@ public class Cat
         //maxWeight = 9000.0;
         //count++;
 
-   // }
-    public Cat(Double weight, String name, String color){
+    // }
+    public Cat(Double weight, String name, Colors type){
         //this();
         this.weight = weight;
-        this.color = color;
         this.name = name;
+        this.type = type;
     }
     public void setWeight(double weight){
         this.weight = weight;
@@ -40,12 +40,12 @@ public class Cat
         return count;
     }
 
-    public void setColor(String color){
-        this.color = color;
-    }
+    //public void setColor(String color){
+     //   this.color = color;
+    //}
 
-    public String getColor(){
-        return color;
+    public Colors getColors(){
+        return type;
     }
 
     public void meow()
