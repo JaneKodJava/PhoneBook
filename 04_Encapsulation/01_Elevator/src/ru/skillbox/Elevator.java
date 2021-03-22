@@ -32,14 +32,23 @@ public class Elevator {
             System.out.println("Ошибка! Попробуйте снова.");
             return;
         }
-        if (currentFloor > floor){
-            while (currentFloor != floor){
+        //if (currentFloor > floor){
+        //    while (currentFloor != floor){
+        //        moveDown();
+        //        System.out.println("Этаж номер " +getCurrentFloor());
+        //    }
+        //}
+        //if (currentFloor < floor){
+         //   while (currentFloor != floor){
+         //       moveUp();
+         //       System.out.println("Этаж номер " +getCurrentFloor());
+          //  }
+        while (currentFloor!= floor){
+            if(currentFloor > floor){
                 moveDown();
                 System.out.println("Этаж номер " +getCurrentFloor());
             }
-        }
-        if (currentFloor < floor){
-            while (currentFloor != floor){
+            if (currentFloor < floor){
                 moveUp();
                 System.out.println("Этаж номер " +getCurrentFloor());
             }
