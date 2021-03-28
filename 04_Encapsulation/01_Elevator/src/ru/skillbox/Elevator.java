@@ -1,6 +1,6 @@
 
 package ru.skillbox;
-import java.util.Scanner;
+
 
 public class Elevator {
     private int currentFloor = 1;
