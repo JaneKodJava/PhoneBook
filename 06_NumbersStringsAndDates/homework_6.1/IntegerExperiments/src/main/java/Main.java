@@ -2,11 +2,11 @@ public class Main {
 
   public static void main(String[] args) {
     Container container = new Container();
-    container.count += 7843;
+    container.count = 7843;
 
-    int sum = sumDigits(7843);
-
+    int sum = sumDigits(null);
     System.out.println(sum);
+
   }
 
   /* Реализуйте метод sumDigits который возвращает сумму цифр числа, пример:
@@ -21,6 +21,30 @@ public class Main {
 
   public static int sumDigits(Integer number) {
     //@TODO: write code here and delete TODO line
-    return 0;
+    int sum = 0;
+    if (number == null) {
+      number = 0;
+      Integer i = 1;
+      sum = -1;
+      System.out.println(number.compareTo(i));
+    }
+
+    else if (number == 0) {
+      Integer i = 1;
+      System.out.println(number.compareTo(i));
+    }
+    else  {
+      while
+      (number > 0) {
+        sum += number % 10;
+        number /= 10;
+      }
+
+    }
+
+      return sum;
+
+
   }
+
 }
