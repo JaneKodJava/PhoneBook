@@ -22,29 +22,42 @@ public class Main {
   public static int sumDigits(Integer number) {
     //@TODO: write code here and delete TODO line
     int sum = 0;
-    if (number == null) {
-      number = 0;
-      Integer i = 1;
+    //if (number == null) {
+    //  number = 0;
+    //  Integer i = 1;
+    //  sum = -1;
+    //  System.out.println(number.compareTo(i));
+    //}
+
+    //else if (number == 0) {
+    //  Integer i = 1;
+    //  System.out.println(number.compareTo(i));
+    //}
+    //else  {
+    //  while
+    //  (number > 0) {
+    //    sum += number % 10;
+    //    number /= 10;
+     // }
+
+    //}
+
+    //  return sum;
+    if(number == null){
       sum = -1;
-      System.out.println(number.compareTo(i));
+    }
+    else if (number == 0 ){
+      sum = 0;
     }
 
-    else if (number == 0) {
-      Integer i = 1;
-      System.out.println(number.compareTo(i));
-    }
-    else  {
-      while
-      (number > 0) {
-        sum += number % 10;
-        number /= 10;
+    else {
+      String j = Integer.toString(number);
+      char[] chars = j.toCharArray();
+      for (int i = 0; i < chars.length; i++) {
+        sum = sum + Character.getNumericValue(chars[i]);
       }
-
     }
-
-      return sum;
-
-
+    return sum;
   }
 
 }
