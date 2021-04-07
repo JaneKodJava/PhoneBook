@@ -3,8 +3,11 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Введите количество ящиков: ");
+
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
+
 
         // TODO: вывести в консоль коробки разложенные по грузовикам и контейнерам
         // пример вывода при вводе 2

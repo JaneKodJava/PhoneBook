@@ -3,28 +3,28 @@ public class Main {
   public static void main(String[] args) {
 
     String text = "Вася заработал 5000 рублей, Петя - 7563 рубля, а Маша - 30000 рублей";
+    String space = text.trim();
     //TODO: напишите ваш код, результат вывести в консоль
 
     System.out.println("Текст = " + text);
 
-    System.out.println("Номер цифры 5: " + text.indexOf('5'));
-    String vasyaSalaryIndex = text.substring(15,19);
-    System.out.println("Васина зарплата: " + vasyaSalaryIndex);
+    int vasyaSalaryIndex1 = space.indexOf('5');
+    int vasyaSalaryIndex2 = space.indexOf('0');
+    int vasyaSalary = Integer.parseInt(space.substring(vasyaSalaryIndex1, vasyaSalaryIndex2 +3));
 
-    System.out.println("Номер цифры 7: " + text.indexOf('7'));
-    String petyaSalary = text.substring(35,39);
-    System.out.println("Петина зарплата: " + petyaSalary);
+    int petyaSalaryIndex1 = space.indexOf('7');
+    int petyaSalaryIndex2 = space.indexOf('3');
+    int petyaSalary = Integer.parseInt(space.substring(petyaSalaryIndex1, petyaSalaryIndex2 +1));
 
-    System.out.println(text.lastIndexOf('3'));
-    String mashaSalary = text.substring(56,61);
-    System.out.println("Машина зарплата: " +mashaSalary);
+    int mashaSalaryIndex1 = space.lastIndexOf('3');
+    int mashaSalaryIndex2 = space.lastIndexOf('0');
+    int mashaSalary = Integer.parseInt(space.substring(mashaSalaryIndex1, mashaSalaryIndex2 +1));
 
-    Integer vasyaZp = Integer.parseInt(vasyaSalaryIndex);
-    Integer petyaZp = Integer.parseInt(petyaSalary);
-    Integer mashaZp = Integer.parseInt(mashaSalary);
+    int sum = vasyaSalary + petyaSalary + mashaSalary;
 
-    int sum = vasyaZp + petyaZp + mashaZp;
-    System.out.println("Сумма: " + sum);
+    System.out.println(sum);
+
+
 
 
   }
