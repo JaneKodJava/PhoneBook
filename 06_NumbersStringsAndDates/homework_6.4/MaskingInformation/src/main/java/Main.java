@@ -2,12 +2,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String text = "Номер кредитной карты: <4008 1234 5678> 8912";
+        String text = "Номер кредитной карты <4008 1234 5678> 8912";
         searchAndReplaceDiamonds(text," *** ");
-
-
-
-
     }
 
     public static boolean validData(String text){
@@ -16,7 +12,7 @@ public class Main {
         int diamond2 = 0;
         String validChar = "";
         if (text.indexOf("<") != -1 && text.indexOf(">") != -1){
-            validChar = "Номеркедитнйаы: <>0123456789";
+            validChar = "Номеркедитнйаы <>0123456789";
         }
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) == '<'){

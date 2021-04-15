@@ -1,32 +1,39 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Main {
+  public static Integer sum = 0;
 
   public static void main(String[] args) {
 
     String text = "Вася заработал 5000 рублей, Петя - 7563 рубля, а Маша - 30000 рублей";
     String space = text.trim();
     //TODO: напишите ваш код, результат вывести в консоль
-
-    System.out.println("Текст = " + text);
-
-    int vasyaSalaryIndex1 = space.indexOf('5');
-    int vasyaSalaryIndex2 = space.indexOf('0');
-    int vasyaSalary = Integer.parseInt(space.substring(vasyaSalaryIndex1, vasyaSalaryIndex2 +3));
-
-    int petyaSalaryIndex1 = space.indexOf('7');
-    int petyaSalaryIndex2 = space.indexOf('3');
-    int petyaSalary = Integer.parseInt(space.substring(petyaSalaryIndex1, petyaSalaryIndex2 +1));
-
-    int mashaSalaryIndex1 = space.lastIndexOf('3');
-    int mashaSalaryIndex2 = space.lastIndexOf('0');
-    int mashaSalary = Integer.parseInt(space.substring(mashaSalaryIndex1, mashaSalaryIndex2 +1));
-
-    int sum = vasyaSalary + petyaSalary + mashaSalary;
-
-    System.out.println(sum);
+// проверка на соответствие допустимым символам [а-яА-Я0-9 ,-]
 
 
+    if (textValid(text)){
+
+      Pattern pattern = Pattern.compile("\\s\\d.+?\\d\\s");
+      Matcher matcher = pattern.matcher(text);
+      while (matcher.find())//noinspection UnnecessaryParentheses
+      {
+        sum += Integer.parseInt(text.substring(matcher.start(), matcher.end()).trim());
+
+      }
+      System.out.println(sum);
+    }
+    // если строка не соответствует разрешенным символам, возвращаем строку без изменений.
+    else {
+      System.out.println(text);
+    }
+
+  }
 
 
+
+  public static boolean textValid(String text){
+    return text.matches("[0-9А-Яа-я\\s,-]{10,}");
   }
 
 }
