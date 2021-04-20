@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
 
@@ -10,37 +12,15 @@ public class Main {
       if (input.equals("0")) {
         break;
       }
-      String phone = input.replaceAll("[^0-9]", "");
-
-      if (phone.length() > 11 || phone.length() < 10){
+      String numberPhone = input.replaceAll("[^0-9]", "");
+      Pattern pattern = Pattern.compile("([7-8]*)(\\d{3})(\\d{7})");
+      Matcher matcher = pattern.matcher(numberPhone);
+      boolean validNumber = matcher.matches();
+      if (validNumber){
+        System.out.println(matcher.replaceAll("7$2$3"));
+      }
+      else {
         System.out.println("Неверный формат номера");
-      }
-
-      char[] phoneToArray = phone.toCharArray();
-
-      if (phone.length() == 11){
-        if (phoneToArray[0] < '7') System.out.println("Неверный формат номера");
-        if (phoneToArray[0] == '9') System.out.println("Неверный формат номера");
-
-        if (phoneToArray[0] == '7'){
-          for (int i = 0; i < phoneToArray.length; i++) {
-            System.out.print(phoneToArray[i]);
-          }
-        }
-        if (phoneToArray[0] == '8'){
-          phoneToArray[0] = '7';
-          for (int i = 0; i < phoneToArray.length; i++)
-          {
-            System.out.print(phoneToArray[i]);
-          }
-        }
-      }
-
-      if (phone.length() == 10){
-        System.out.print("7");
-        for (int i = 0; i < phoneToArray.length; i++) {
-          System.out.print(phoneToArray[i]);
-        }
       }
 
     }
