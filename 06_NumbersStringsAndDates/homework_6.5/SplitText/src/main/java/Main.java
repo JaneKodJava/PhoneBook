@@ -19,4 +19,8 @@ public class Main {
     return "";
   }
 
+  public static boolean textValid(String text){
+    return text.matches("[A-Za-z\\s,.']");
+  }
+
 }
