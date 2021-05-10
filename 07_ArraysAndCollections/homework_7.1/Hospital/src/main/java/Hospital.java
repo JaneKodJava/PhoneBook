@@ -6,7 +6,7 @@ public class Hospital {
 
         float[] temperature = new float[patientsCount];
         for (int i = 0; i < patientsCount; i++) {
-            temperature[i] = (float) (Math.random() * (40 - 36.2) + 36.2);
+            temperature[i] = (float) (Math.random() * (40 - 32) + 32);
         }
 
         return temperature;
@@ -23,7 +23,7 @@ public class Hospital {
 
         for (int i = 0; i < temperatureData.length; i++) {
             totalTemperature += temperatureData[i];
-            if (temperatureData[i] < 36.9){
+            if (temperatureData[i] >= 36.2 && temperatureData[i] <= 36.9){
                 countHealthyPatients++;
             }
             DecimalFormat decimalFormat = new DecimalFormat("##.#");
