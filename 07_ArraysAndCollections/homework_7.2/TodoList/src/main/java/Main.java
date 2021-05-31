@@ -28,40 +28,46 @@ public class Main {
                 int spaceIndex = text.indexOf(' ');
                 String command = text.substring(0, spaceIndex); // команда
                 String thing = text.substring(spaceIndex +1); // текст дела
-                if (command.equals("ADD")) {
-                    if (!indexEntered(thing)){
+                switch (command){
+                    case "ADD":
+                        if (!indexEntered(thing)){
+                            String spaceThing = thing.trim();
+                            int spaceIndexThing = spaceThing.indexOf(' ');
+                            String numberThing = spaceThing.substring(0, spaceIndexThing); // номер дела
+                            String todo = spaceThing.substring(spaceIndexThing +1); // текст дела с номером
+                            int index = Integer.parseInt(numberThing);
+                            todoList.add(index, todo);
+                        }
+                        else {
+                            todoList.add(thing);
+                        }
+                        break;
+
+                    case "EDIT":
                         String spaceThing = thing.trim();
                         int spaceIndexThing = spaceThing.indexOf(' ');
                         String numberThing = spaceThing.substring(0, spaceIndexThing); // номер дела
                         String todo = spaceThing.substring(spaceIndexThing +1); // текст дела с номером
                         int index = Integer.parseInt(numberThing);
-                        todoList.add(index, todo);
-                    }
-                    else {
-                        todoList.add(thing);
-                    }
+                        todoList.edit(todo, index);
+                        break;
 
+                    case "DELETE":
+                        int index1 = Integer.parseInt(thing);
+                        todoList.delete(index1);
                 }
-                if (command.equals("EDIT")){
-                    String spaceThing = thing.trim();
-                    int spaceIndexThing = spaceThing.indexOf(' ');
-                    String numberThing = spaceThing.substring(0, spaceIndexThing); // номер дела
-                    String todo = spaceThing.substring(spaceIndexThing +1); // текст дела с номером
-                    int index = Integer.parseInt(numberThing);
-                    todoList.edit(todo, index);
-                }
-                if (command.equals("DELETE")){
-                    int index = Integer.parseInt(thing);
-                    todoList.delete(index);
-                }
-
 
             }
-            if (countSpace == 0){
+            else if (countSpace == 0){
                 String command = text;
-                if (command.equals("LIST")){
-                    todoList.getTodos();
+                switch (command){
+                    case "LIST":
+                        todoList.getTodos();
+                        break;
+                    default:
+                        System.out.println("Неверно введена команда");
                 }
+
             }
 
         }
