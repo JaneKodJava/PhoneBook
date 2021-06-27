@@ -2,39 +2,32 @@ import java.util.*;
 
 public class CoolNumbers {
 
-    public static ArrayList<String> arrayCoolNumbers = new ArrayList<>();
-    public static HashSet<String> hashSet = new HashSet<>();
-    public  static TreeSet<String> treeSet = new TreeSet<>();
-    public static ArrayList<String> coolNumbersSearchedArray = new ArrayList<>();
+    ArrayList<String> coolNumbersSearchedArray = new ArrayList<>();
 
-    public  static String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};//разрешенные буквы
+    public static String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};//разрешенные буквы
     public static int lettersLength = letters.length;
 
     public static List<String> generateCoolNumbers() {
         String number = null;
+        ArrayList<String> coolNumbers = new ArrayList<>();
         for (int i = 0; i < 2_000_000; i++) {
             number = getFirstLetter() + getThreeDigits() + getSecondLetters() + getRandRegion();
-            arrayCoolNumbers.add(number);
-            hashSet.add(number);
-            treeSet.add(number);
-        }
-        return Collections.emptyList();
-    }
 
-    public static List sortList(List<String> list){
-        Collections.sort(list);
-        return list;
+        }
+        coolNumbers.add(number);
+        return coolNumbers;
     }
 
     public static boolean bruteForceSearchInList(List<String> list, String number) {
-        for (String numbers : arrayCoolNumbers){
-            if (numbers.equals(number)){
-                System.out.println("Номер найден линейным поиском: " + numbers);
-                return true;
-            }
+        boolean validNumber = false;
+        long start = System.nanoTime();
+        if(list.contains(number)){
+            validNumber = true;
+            System.out.println("Поиск перебором: номер найден, поиск занял: " + (System.nanoTime() - start));
+        }else{
+            System.out.println("Поиск перебором: номер не найден, поиск занял: " + (System.nanoTime() - start));
         }
-        System.out.println("Номер не найден линейным поиском");
-        return false;
+        return validNumber;
     }
 
     public String linearSearchRegex(ArrayList<String> arrayCoolNumbers){// линейный поиск
@@ -55,47 +48,44 @@ public class CoolNumbers {
         }
     }
 
-
     public static boolean binarySearchInList(List<String> sortedList, String number) {
-        return arrayCoolNumbers.contains(number);
-    }
-
-    public static String binarySearch(List<String> sortedList, String number){
-        if (binarySearchInList(sortedList, number)){
-            System.out.println("Элемент найден бинарным поиском в эррейлисте:");
-            System.out.println(arrayCoolNumbers.get(Collections.binarySearch(arrayCoolNumbers, number)));
+        boolean validNumber = false;
+        long start = System.nanoTime();
+        if(Collections.binarySearch(sortedList,number) >= 0){
+            validNumber = true;
+            System.out.println("Бинарный поиск: номер найден, поиск занял: " + (System.nanoTime() - start));
+        }else{
+            System.out.println("Бинарный поиск: номер не найден, поиск занял: " + (System.nanoTime() - start));
         }
-        else {
-            System.out.println("Элемент не найден бинарным поиском в эррейлисте");
-        }
-        return "";
+        return validNumber;
     }
-
 
     public static boolean searchInHashSet(HashSet<String> hashSet, String number) {
-        return hashSet.contains(number);
-    }
-
-    public static void printHashSet(HashSet<String> hashSet, String number){
-        if (searchInHashSet(hashSet, number)){
-            System.out.println("Номер найден в хэшсет");
+        boolean validNumber = false;
+        long start = System.nanoTime();
+        for(String search : hashSet) {
+            if (search.equals(number)){
+                validNumber = true;
+                System.out.println("Поиск в HashSet: номер найден, поиск занял: " + (System.nanoTime() - start));
+            }else {
+                System.out.println("Поиск в HashSet: номер не найден, поиск занял: " + (System.nanoTime() - start));
+            }
         }
-        else {
-            System.out.println("Номер не найден в хэшсет");
-        }
+        return validNumber;
     }
 
     public static boolean searchInTreeSet(TreeSet<String> treeSet, String number) {
-        return treeSet.contains(number);
-    }
-
-    public static void printTreeSet(TreeSet<String> treeSet, String number){
-        if (searchInTreeSet(treeSet, number)){
-            System.out.println("Номер найден в трисет");
+        boolean validNumber = false;
+        long start = System.nanoTime();
+        for(String search : treeSet) {
+            if (search.equals(number)) {
+                validNumber = true;
+                System.out.println("Поиск в TreeSet: номер найден, поиск занял: " + (System.nanoTime() - start));
+            } else {
+                System.out.println("Поиск в TreeSet: номер не найден, поиск занял: " + (System.nanoTime() - start));
+            }
         }
-        else {
-            System.out.println("Номер не найден в трисет");
-        }
+        return validNumber;
     }
 
     public static String getRandRegion(){

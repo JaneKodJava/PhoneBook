@@ -1,68 +1,67 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PhoneBook {
+    private static final HashMap<String, ArrayList<String>> phonesBook = new HashMap<>();
 
-
-    TreeMap<String, String> treeMap = new TreeMap<>();
-
-    public void addContact(String phone, String name) {
-        // проверьте корректность формата имени и телефона
-        // если такой номер уже есть в списке, то перезаписать имя абонента
-        if (isValidInputName(name) & isValidInputPhone(phone)){
-            treeMap.put(phone, name);
+    public void addContact(String name, String phone){
+        if (!phonesBook.containsKey(name)){
+            phonesBook.put(name, new ArrayList<String>());
         }
-
+        phonesBook.get(name).add(phone);
     }
 
-    public String getNameByPhone(String phone) {
-        // формат одного контакта "Имя - Телефон"
-        // если контакт не найдены - вернуть пустую строку
-        if (treeMap.containsKey(phone) & isValidInputPhone(phone)) {
-            return treeMap.get(phone) + " - " + phone;
+    public void getAllContacts(){
+        for (String names : phonesBook.keySet()){
+            System.out.print(names + " - ");
+            for (String phones : phonesBook.get(names)){
+                System.out.print(phones + ", ");
+            }
+            System.out.println();
         }
-        else return "";
     }
 
-    public Set<String> getPhonesByName(String name) {
-        // формат одного контакта "Имя - Телефон"
-        // если контакт не найден - вернуть пустой TreeSet
-        TreeSet<String> phones = new TreeSet<>();
-        for (Map.Entry entry : treeMap.entrySet()){
-            if(entry.getValue().equals(name)){
-                phones.add(name + " - " + entry.getKey().toString());
+    public boolean isPhoneExist(String phone){
+        boolean phoneExist = false;
+        for (String names : phonesBook.keySet()){
+            for (String phones : phonesBook.get(names)){
+                if (phones.equals(phone)){
+                    System.out.println(names + " - " + phone);
+                    phoneExist = true;
+                    return phoneExist;
+                }
             }
         }
-
-        return phones;
-    }
-
-    public Set<String> getAllContacts() {
-        // формат одного контакта "Имя - Телефон"
-        // если контактов нет в телефонной книге - вернуть пустой TreeSet
-        TreeSet<String> allContacts = new TreeSet<>();
-        for (String key : treeMap.keySet()){
-            allContacts.add(treeMap.get(key) + " - " + key);
-        }
-        return allContacts;
-    }
-
-    public boolean isContactExist(String phone){
-        return treeMap.containsKey(phone);
+        if (phoneExist) return true;
+        else return false;
     }
 
     public boolean isNameExist(String name){
-        return treeMap.containsValue(name);
+        boolean nameExist = false;
+        nameExist = phonesBook.containsKey(name);
+        for (Map.Entry entry : phonesBook.entrySet()){
+            if (entry.getKey().equals(name)){
+                System.out.print(name + " - ");
+                for (String phones : phonesBook.get(name)){
+                    System.out.print(phones + ", ");
+                }
+            }
+        }
+        return nameExist;
+    }
+
+    public boolean isValidNameFormat(String input){
+        return input.matches("([A-z]+)|([А-яё]+)");
+    }
+
+    public boolean isValidPhoneFormat(String input){
+        return input.matches("[7|8]\\d{10}");
+    }
+
+    public boolean isValidList(String input){
+        return input.matches("LIST");
     }
 
 
-    public boolean isValidInputName(String input){
-        // Проверка имени
-        return input.matches("(^LIST)([A-z]+)|([А-яё]+)");
-    }
-
-    public boolean isValidInputPhone(String input){
-        // Проверка номера телефона
-        return input.matches("([7|8]\\d{10})");
-    }
-
-}
+   }
