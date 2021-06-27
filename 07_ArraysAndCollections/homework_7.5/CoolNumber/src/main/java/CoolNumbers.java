@@ -2,8 +2,6 @@ import java.util.*;
 
 public class CoolNumbers {
 
-    ArrayList<String> coolNumbersSearchedArray = new ArrayList<>();
-
     public static String[] letters = {"А", "В", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"};//разрешенные буквы
     public static int lettersLength = letters.length;
 
@@ -30,23 +28,6 @@ public class CoolNumbers {
         return validNumber;
     }
 
-    public String linearSearchRegex(ArrayList<String> arrayCoolNumbers){// линейный поиск
-        for (String number : arrayCoolNumbers) {
-            if (isCoolNumber1(number) | isCoolNumber2(number) | isCoolNumber3(number) | isCoolNumber4(number) | isCoolNumber5(number)){
-                coolNumbersSearchedArray.add(number);
-            }
-
-        }
-        return "Not found";
-    }
-
-    public void printCoolNumbersSearchedArray(ArrayList<String> arrayCoolNumbers){
-        linearSearchRegex(arrayCoolNumbers);
-        System.out.println("Список классных номеров:");
-        for (String num : coolNumbersSearchedArray){
-            System.out.println(num);
-        }
-    }
 
     public static boolean binarySearchInList(List<String> sortedList, String number) {
         boolean validNumber = false;
@@ -129,19 +110,4 @@ public class CoolNumbers {
         return treeDigits;
     }
 
-    public boolean isCoolNumber1(String number){
-        return number.matches("\\W[1]{3}\\W{2}\\d+");
-    }
-    public boolean isCoolNumber2(String number){
-        return number.matches("\\W[3]{3}\\W{2}\\d+");
-    }
-    public boolean isCoolNumber3(String number){
-        return number.matches("\\W[5]{3}\\W{2}\\d+");
-    }
-    public boolean isCoolNumber4(String number){
-        return number.matches("\\W[7]{3}\\W{2}\\d+");
-    }
-    public boolean isCoolNumber5(String number){
-        return number.matches("\\W[9]{3}\\W{2}\\d+");
-    }
 }
